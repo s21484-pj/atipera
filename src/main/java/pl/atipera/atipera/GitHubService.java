@@ -59,7 +59,8 @@ public class GitHubService {
         HttpEntity<String> httpEntity = getHttpEntity();
         ResponseEntity<Branch[]> response = restTemplate.exchange(url, HttpMethod.GET, httpEntity, Branch[].class);
         if (response.getBody() != null) {
-            Arrays.stream(response.getBody()).forEach(branch -> {
+            Arrays.stream(response.getBody())
+                    .forEach(branch -> {
                 BranchDTO branchDTO = new BranchDTO();
                 branchDTO.setName(branch.getName());
                 branchDTO.setSha(branch.getCommit() != null ? branch.getCommit().getSha() : null);

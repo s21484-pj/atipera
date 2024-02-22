@@ -10,7 +10,7 @@ import org.springframework.web.client.RestClientException;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(RestClientException.class)
-    public ResponseEntity<ApiError> handleEntityNotFoundException(RestClientException exception) {
+    public ResponseEntity<ApiError> handleRestClientException(RestClientException exception) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiError(HttpStatus.NOT_FOUND, exception.getMessage()));
     }
 }
